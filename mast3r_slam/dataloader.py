@@ -10,6 +10,8 @@ import yaml
 from mast3r_slam.mast3r_utils import resize_img
 from mast3r_slam.config import config
 
+from itertools import chain
+
 HAS_TORCHCODEC = True
 try:
     from torchcodec.decoders import VideoDecoder
@@ -270,7 +272,9 @@ class RGBFiles(MonocularDataset):
         super().__init__()
         self.use_calibration = False
         self.dataset_path = pathlib.Path(dataset_path)
-        self.rgb_files = natsorted(list((self.dataset_path).glob("*.png")))
+        self.rgb_files = natsorted(list(chain.from_iterable(
+            self.dataset_path.glob(f"*.{ext}") for ext in ["jpg", "jpeg", "png", "bmp", "tiff"]
+        )))
         self.timestamps = np.arange(0, len(self.rgb_files)).astype(self.dtype) / 30.0
 
 
