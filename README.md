@@ -32,12 +32,9 @@ nvcc --version
 ```
 Install pytorch with **matching** CUDA version following:
 ```
-# CUDA 11.8
-conda install pytorch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1  pytorch-cuda=11.8 -c pytorch -c nvidia
-# CUDA 12.1
-conda install pytorch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 pytorch-cuda=12.1 -c pytorch -c nvidia
-# CUDA 12.4
-conda install pytorch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 pytorch-cuda=12.4 -c pytorch -c nvidia
+# (e.g.) CUDA 12.4
+pip install torch==2.5.0 torchvision==0.20.0 torchaudio==2.5.0 --index-url https://download.pytorch.org/whl/cu124
+
 ```
 
 Clone the repo and install the dependencies.
